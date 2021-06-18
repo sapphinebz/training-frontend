@@ -13,9 +13,12 @@ const routes: Routes = [
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
   
-  { path: 'product', component: ProductListComponent },
-  { path: 'product/edit/:id', component: ProductEditComponent },
-  { path: 'product/create', component: ProductCreateComponent },
+  { path: 'product', children: [
+    { path: '', component: ProductListComponent },
+    { path: 'edit/:id', component: ProductEditComponent },
+    { path: 'create', component: ProductCreateComponent }
+  ]
+},
   
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'page-not-found' }
