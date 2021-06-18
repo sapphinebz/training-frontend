@@ -8,6 +8,12 @@ import { HeaderComponent } from '@layouts/header/header.component';
 import { FooterComponent } from '@layouts/footer/footer.component';
 import { MenuBarComponent } from '@layouts/menu-bar/menu-bar.component';
 import { LogInComponent } from '@layouts/log-in/log-in.component';
+import { RegisterComponent } from '@layouts/register/register.component';
+import { PageNotFoundComponent } from '@layouts/page-not-found/page-not-found.component';
+
+import { ProductListComponent } from '@menus/product/product-list/product-list.component';
+import { ProductEditComponent } from '@menus/product/product-edit/product-edit.component';
+import { ProductCreateComponent } from '@menus/product/product-create/product-create.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +21,12 @@ import { LogInComponent } from '@layouts/log-in/log-in.component';
     HeaderComponent,
     FooterComponent,
     MenuBarComponent,
-    LogInComponent
+    LogInComponent,
+    RegisterComponent,
+    PageNotFoundComponent,
+    ProductListComponent,
+    ProductEditComponent,
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,
