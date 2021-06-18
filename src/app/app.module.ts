@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from '@app/app-routing.module';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from '@app/app.component';
 
 import { HeaderComponent } from '@layouts/header/header.component';
@@ -30,7 +32,8 @@ import { ProductCreateComponent } from '@menus/product/product-create/product-cr
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
