@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { LoginService } from '@services/login.service';
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
 export class LogInComponent implements OnInit {
 
   constructor(
-    private router : Router
+    private router : Router,
+    private loginService : LoginService
   ) { }
 
   ngOnInit(): void {
   }
 
-  onClickSubmit(values: NgForm){
-    console.log(values);
+  async onClickSubmit(values: NgForm){
+    let result = await this.loginService.login(values);
+    alert(JSON.stringify(result));
   }
 
   routeToRegister(){
