@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location:Location) { }
 
   ngOnInit(): void {
   }
@@ -16,5 +17,11 @@ export class RegisterComponent implements OnInit {
   onClickRegister(values: NgForm){
     alert(JSON.stringify(values));
   }
+
+  backToLogin(){
+    this.location.back();
+  }
+
+
 
 }

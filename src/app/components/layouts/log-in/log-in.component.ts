@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -8,13 +9,19 @@ import { NgForm } from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onClickSubmit(values: NgForm){
     console.log(values);
+  }
+
+  routeToRegister(){
+    this.router.navigate(["register"]);
   }
 
 }
