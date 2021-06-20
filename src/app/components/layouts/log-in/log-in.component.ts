@@ -19,7 +19,7 @@ export class LogInComponent implements OnInit {
 
   async onClickSubmit(values: NgForm){
     try {
-      let result = await this.loginService.login(values);
+      let result = await this.loginService.login(values).toPromise();
       alert(JSON.stringify(result));
     } catch (error) {
       alert(JSON.stringify(error.error.message));

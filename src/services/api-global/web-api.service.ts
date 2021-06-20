@@ -17,7 +17,7 @@ export class WebApiService {
 
   login(action :string , value : NgForm){
     const _url = this.url + action;
-    return this.httpClient.post<any>(_url, value, {headers : this.headers}).toPromise();
+    return this.httpClient.post<any>(_url, value, {headers : this.headers});
   }
 
 }
