@@ -2,6 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RegisterService } from '@services/register.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +11,11 @@ import { RegisterService } from '@services/register.service';
 })
 export class RegisterComponent implements OnInit {
 
+
+  isError: boolean = false;
+  errorMessage : string;
   constructor(
+    private router : Router,
     private location:Location,
     private registerService : RegisterService
   ) { }
@@ -20,11 +26,16 @@ export class RegisterComponent implements OnInit {
   async onClickRegister(values: NgForm){
     try {
       let result = await this.registerService.register(values).toPromise();
-      alert(JSON.stringify(result));
+      if (result.result == 'ok') {
+        this.isError = false;
+        this.router.navigate(['/login']);
+       } else {
+        this.isError = true;
+       }
     } catch (error) {
-      alert(error.error.message);
+      this.isError = true;
+      this.errorMessage = JSON.stringify(error.error.message);
     }
-    
   }
 
   backToLogin(){
