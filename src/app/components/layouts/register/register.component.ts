@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { RegisterService } from '@services/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,13 +9,22 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private location:Location) { }
+  constructor(
+    private location:Location,
+    private registerService : RegisterService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onClickRegister(values: NgForm){
-    alert(JSON.stringify(values));
+  async onClickRegister(values: NgForm){
+    try {
+      let result = await this.registerService.register(values).toPromise();
+      alert(JSON.stringify(result));
+    } catch (error) {
+      alert(error.error.message);
+    }
+    
   }
 
   backToLogin(){
