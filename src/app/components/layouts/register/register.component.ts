@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RegisterService } from '@services/register.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -27,8 +28,18 @@ export class RegisterComponent implements OnInit {
     try {
       let result = await this.registerService.register(values).toPromise();
       if (result.result == 'ok') {
+        console.log(result);
         this.isError = false;
-        this.router.navigate(['/login']);
+        Swal.fire({
+            title: 'Successful Registration',
+            text:  `This username : ${result.user.username} is completed registered.`,
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK!'
+        })
+        .then(() => {
+          this.router.navigate(['/login']);
+        }) 
        } else {
         this.isError = true;
        }
