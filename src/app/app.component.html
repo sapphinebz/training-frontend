@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-menu-bar></app-menu-bar>
+<app-header *ngIf="webapiservice.isLoggedIn()"></app-header>
+<app-menu-bar *ngIf="webapiservice.isLoggedIn()"></app-menu-bar>
 <!-- <app-log-in></app-log-in> -->
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-footer *ngIf="webapiservice.isLoggedIn()"></app-footer>
