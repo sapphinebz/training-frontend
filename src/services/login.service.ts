@@ -12,6 +12,6 @@ export class LoginService {
   ) {}
 
   login(value:NgForm){
-    return this.webapi.login('authen/login',value);
+    return this.webapi.post('authen/login',value);
   }
 }
