@@ -15,6 +15,11 @@
         <input ngModel name="password" type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
+      <div *ngIf="isError" class="row" style="text-align: center; color: red; margin-bottom: 8px;">
+        {{ errorMessage }}
+      </div>
+
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-12">

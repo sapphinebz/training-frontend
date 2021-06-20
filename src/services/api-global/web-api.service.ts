@@ -14,6 +14,11 @@ export class WebApiService {
       this.url = environment.baseUrl;
   }
 
+  isLoggedIn(){
+    let loginResult = sessionStorage.getItem(environment.loginResult);
+    return (loginResult != null && loginResult == 'ok');
+  }
+
   post(action :string , value : NgForm){
     const _url = this.url + action;
     return this.httpClient.post<any>(_url, value, {headers : this.headers});
