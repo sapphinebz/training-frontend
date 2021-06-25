@@ -1,0 +1,58 @@
+<ng-container [formGroup]="productFormGroup">
+    <div class="content-wrapper" >
+      <div class="p-grid">
+        <div class="p-col-12">
+          <span class="p-float-label p-field p-fluid">
+            <input type="text" pInputText formControlName="name" placeholder="ชื่อสินค้า" />
+            <!-- <label for="inputtext">ชื่อสินค้า</label> -->
+            <small id="product-help" *ngIf="nameForm.invalid && nameForm.touched" class="p-error">Product's Name is not available.</small>
+          </span>
+        </div>
+        <div class="p-col-12">
+          <span class="p-float-label p-field p-fluid">
+            <p-inputNumber formControlName="stock" inputId="stock" placeholder="จำนวนสินค้า"></p-inputNumber>
+            <!-- <label for="inputtext">stock</label> -->
+            <small id="stock-help" *ngIf="stockForm.invalid && stockForm.touched" class="p-error">Stock is not available.</small>
+          </span>
+        </div>
+        <div class="p-col-12">
+          <span class="p-float-label p-field p-fluid">
+            <p-inputNumber formControlName="price" inputId="price" placeholder="ราคา"></p-inputNumber>
+            <!-- <label for="inputtext">price</label> -->
+            <small id="price-help" *ngIf="priceForm.invalid && priceForm.touched" class="p-error">Price is not available.</small>
+          </span>
+        </div>
+        <div class="p-col-12">
+          <p-fileUpload
+            mode="basic"
+            accept="image/*"
+            [maxFileSize]="1000000"
+            chooseLabel="รูปสินค้า"
+            (onSelect)="onSelectFileUpload($event)"
+          ></p-fileUpload>
+    
+          <img *ngIf="previewUrl" [src]="previewUrl" alt="upload_image">
+        </div>
+      </div>
+      <div class="p-col-12">
+        <p-button
+          label="บันทึก"
+          icon="pi pi-save"
+          [loading]="false"
+          (onClick)="saveProduct()"
+        ></p-button>
+        <p-button
+          label="ยกเลิก"
+          icon="pi pi-undo"
+          [loading]="false"
+          (onClick)="cancelProduct()"
+        ></p-button>
+        <p-button
+        label="ย้อนกลับ"
+        icon="pi pi-undo"
+        [routerLink]="['/product']"
+      ></p-button>
+      </div>
+    </div>
+    </ng-container>
+    

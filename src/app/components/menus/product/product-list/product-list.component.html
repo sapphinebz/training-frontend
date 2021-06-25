@@ -1,4 +1,53 @@
 <div class="content-wrapper">
-    <p>product-list works!</p>
-</div>
+  <div>
+    <p-button label="Add" [routerLink]="['/product','create']" icon="pi pi-plus" iconPos="left"></p-button>
+  </div>
+  <p-dataView [value]="$any(products$ | async)">
+    <ng-template let-product pTemplate="listItem">
+      <div>
+        {{ product.name }}
+      </div>
+    </ng-template>
 
+    <ng-template let-product pTemplate="listItem">
+      <div class="p-col-12">
+        <div class="product-list-item">
+          <ng-template
+            [appLoadImageNameLoadingTemplate]="loadingTpr"
+            [appLoadImageName]="product.image"
+            let-url
+          >
+          <img *appLoadImageName="product.image loadingTemplate loadingTpr" [src]="url" [alt]="product.name" />
+          </ng-template>
+          <ng-template #loadingTpr> 
+            
+            <app-loading-hourglass></app-loading-hourglass>
+          
+          </ng-template>
+        
+
+          <div class="product-list-detail">
+            <div class="product-name">{{ product.name }}</div>
+            <!-- <div class="product-description">{{product.description}}</div> -->
+            <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+            <i class="pi pi-tag product-category-icon"></i
+            ><span class="product-category">{{ product.category }}</span>
+          </div>
+          <div class="product-list-action">
+            <span class="product-price">${{ product.price }}</span>
+            <p-button icon="pi pi-shopping-cart" label="Add to Cart"></p-button>
+            <p-button (onClick)="editProduct(product)" icon="pi pi-pencil" label="Edit Product"></p-button>
+            <p-button (onClick)="removeProduct(product.id)" icon="pi pi-trash" label="Remove Product"></p-button>
+            <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.stock}}</span> -->
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+
+  <!-- <div class="p-grid" style="width:100%">
+        <div class="p-col-12 p-lg-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur eaque quo dolorem ipsa iste veniam, ab quisquam maiores impedit vel minima. Neque quae eos officiis facilis inventore tempore. Quae, necessitatibus!</div>
+        <div class="p-col-12 p-lg-3">Recusandae rem itaque facere consequatur impedit. Deserunt necessitatibus beatae quod consequatur, dolor voluptates provident, similique hic dicta nemo fugit. Sit totam necessitatibus aliquam nemo molestiae omnis corrupti illo nostrum placeat.</div>
+        <div class="p-col-12 p-lg-3">Officia quo eligendi tempora optio soluta id illum rem consequatur eum deserunt. Sit, fugit quod, reiciendis voluptatibus porro omnis ducimus, enim delectus aliquid dolor maiores? Quis atque voluptas minima dolore!</div>
+    </div> -->
+</div>

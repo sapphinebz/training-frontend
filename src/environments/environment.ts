@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseImageUrl : 'http://localhost:1150/',
   baseUrl : 'http://localhost:1150/api/',
   loginResult : 'loginResult'
 };
